@@ -1,0 +1,27 @@
+<section class="d-inline">
+  <button
+    type="button"
+    class="nes-btn"
+    [ngClass]="isBg ? 'is-warning' : 'is-primary'"
+    (click)="openDialog()"
+  >
+    {{ isBg ? 'Change BG Color' : 'Change Color' }}
+  </button>
+</section>
+<section>
+  <dialog class="nes-dialog is-dark is-rounded" id="dialog-dark-rounded">
+    <form method="dialog">
+      <div class="row">
+        <button
+          (click)="changeColor(color)"
+          *ngFor="let color of buttonsColors"
+          class="nes-btn col-md-1 col-xs-1 col-sm-1 color-button"
+          [ngStyle]="{ backgroundColor: color }"
+        ></button>
+      </div>
+      <menu class="dialog-menu">
+        <button class="nes-btn">Cancel</button>
+      </menu>
+    </form>
+  </dialog>
+</section>

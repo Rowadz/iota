@@ -6,10 +6,5 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./options.component.scss']
 })
 export class OptionsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit(): void {}
 }
