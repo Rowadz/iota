@@ -1,7 +1,7 @@
-<section class="d-inline">
+<section class="d-inline row">
   <button
     type="button"
-    class="nes-btn"
+    class="nes-btn col-12"
     [ngClass]="isBg ? 'is-warning' : 'is-primary'"
     (click)="openDialog()"
   >
@@ -11,7 +11,7 @@
 <section>
   <dialog class="nes-dialog is-dark is-rounded" id="dialog-dark-rounded">
     <form method="dialog">
-      <div class="row">
+      <div class="row allow-scroll-through-colors">
         <button
           (click)="changeColor(color)"
           *ngFor="let color of buttonsColors"
