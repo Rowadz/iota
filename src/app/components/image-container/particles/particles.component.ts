@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import polygon from './particlesConf/polygon.conf';
+import atoms from './particlesConf/atoms.conf';
 import domToImage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import { v4 } from 'uuid';
@@ -12,13 +12,13 @@ import { v4 } from 'uuid';
 export class ParticlesComponent implements OnInit {
   readonly conf: any;
   constructor() {
-    this.conf = polygon;
+    this.conf = atoms;
   }
 
   ngOnInit(): void {
-    const node = document.getElementById('particles');
-    domToImage.toBlob(node).then((blob: Blob) => {
-      saveAs(blob, v4());
-    });
+    // const node = document.getElementById('particles');
+    // domToImage.toBlob(node).then((blob: Blob) => {
+    //   saveAs(blob, v4());
+    // });
   }
 }

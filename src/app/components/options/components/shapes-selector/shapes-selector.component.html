@@ -1,0 +1,12 @@
+<!-- <label for="default_select">Default select</label> -->
+<div class="nes-select">
+  <select
+    required
+    id="default_select"
+    (change)="onShapeChanged($event.target.value)"
+  >
+    <!-- <option value="" disabled selected hidden>Select Shape</option> -->
+    <option value="Atoms" selected>Atoms</option>
+    <option value="Pentagons">Pentagons</option>
+  </select>
+</div>

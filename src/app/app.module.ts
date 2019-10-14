@@ -9,6 +9,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ColorOptionsComponent } from './components/options/components/color-options/color-options.component';
 import { ParticlesComponent } from './components/image-container/particles/particles.component';
 import { ParticlesModule } from 'angular-particle';
+import { ShapesSelectorComponent } from './components/options/components/shapes-selector/shapes-selector.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ParticlesModule } from 'angular-particle';
     ImageContainerComponent,
     ToolbarComponent,
     ColorOptionsComponent,
-    ParticlesComponent
+    ParticlesComponent,
+    ShapesSelectorComponent
   ],
   imports: [BrowserModule, AppRoutingModule, ParticlesModule],
   providers: [],

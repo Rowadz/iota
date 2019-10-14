@@ -1,5 +1,6 @@
 export const colors: Array<string> = Array.from(
   new Set([
+    '#000000',
     '#230A59',
     '#3E38F2',
     '#F20732',
@@ -67,6 +68,8 @@ export const colors: Array<string> = Array.from(
     '#734F59',
     '#F24405',
     '#F25C05',
-    '#BF6B7B'
+    '#BF6B7B',
+    '#024873',
+    '#ffffff'
   ])
 );
