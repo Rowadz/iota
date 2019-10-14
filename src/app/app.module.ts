@@ -7,6 +7,8 @@ import { OptionsComponent } from './components/options/options.component';
 import { ImageContainerComponent } from './components/image-container/image-container.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ColorOptionsComponent } from './components/options/components/color-options/color-options.component';
+import { ParticlesComponent } from './components/image-container/particles/particles.component';
+import { ParticlesModule } from 'angular-particle';
 
 @NgModule({
   declarations: [
@@ -14,9 +16,10 @@ import { ColorOptionsComponent } from './components/options/components/color-opt
     OptionsComponent,
     ImageContainerComponent,
     ToolbarComponent,
-    ColorOptionsComponent
+    ColorOptionsComponent,
+    ParticlesComponent
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, ParticlesModule],
   providers: [],
   bootstrap: [AppComponent]
 })
