@@ -6,7 +6,12 @@
     (change)="onShapeChanged($event.target.value)"
   >
     <!-- <option value="" disabled selected hidden>Select Shape</option> -->
-    <option value="Atoms" selected>Atoms</option>
-    <option value="Pentagons">Pentagons</option>
+    <option
+      [value]="shape"
+      *ngFor="let shape of shapes"
+      [selected]="composer.shape === shape"
+    >
+      {{ shape }}
+    </option>
   </select>
 </div>

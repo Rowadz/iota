@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import atoms from './particlesConf/atoms.conf';
+import pentagon from './particlesConf/pentagon.conf';
 import domToImage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import { v4 } from 'uuid';
+import { ComposerService } from 'src/app/services/composer.service';
+import { AppState } from 'src/app/models';
+import { IParams } from 'angular-particle/lib';
+import { DeepPartial } from 'utility-types';
 
 @Component({
   selector: 'iota-particles',
@@ -10,9 +15,19 @@ import { v4 } from 'uuid';
   styleUrls: ['./particles.component.scss']
 })
 export class ParticlesComponent implements OnInit {
-  readonly conf: any;
-  constructor() {
-    this.conf = atoms;
+  conf: DeepPartial<IParams>;
+  state: AppState;
+  constructor(private readonly composer: ComposerService) {
+    this.composer.stateChange.subscribe((s: AppState) => {
+      console.log(s);
+      console.log(this.conf);
+      if (this.conf) {
+        this.conf = null;
+      }
+      setTimeout(() => {
+        this.conf = s.particlesConf;
+      }, 0);
+    });
   }
 
   ngOnInit(): void {

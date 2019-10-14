@@ -1,4 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
+import { ComposerService } from 'src/app/services/composer.service';
+import { Shape } from 'src/app/models';
 
 @Component({
   selector: 'iota-shapes-selector',
@@ -6,15 +8,15 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./shapes-selector.component.scss']
 })
 export class ShapesSelectorComponent implements OnInit {
-  @Output() shapeChanged: EventEmitter<string>;
+  readonly shapes: Array<Shape>;
 
-  constructor() {
-    this.shapeChanged = new EventEmitter<string>();
+  constructor(public readonly composer: ComposerService) {
+    this.shapes = ['Atoms', 'Pentagons'];
   }
 
   ngOnInit(): void {}
 
-  onShapeChanged(shape: string) {
-    console.log(shape);
+  onShapeChanged(shape: Shape) {
+    this.composer.setShape(shape);
   }
 }

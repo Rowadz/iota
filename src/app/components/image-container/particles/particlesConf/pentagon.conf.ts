@@ -1,3 +1,6 @@
+import { DeepPartial } from 'utility-types';
+import { IParams } from 'angular-particle/lib';
+
 export default {
   particles: {
     number: {
@@ -98,4 +101,4 @@ export default {
     }
   },
   retina_detect: true
-};
+} as DeepPartial<IParams>;

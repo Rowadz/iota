@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ComposerService } from './services/composer.service';
 
 @Component({
   selector: 'iota-root',
@@ -6,4 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  constructor(private readonly composer: ComposerService) {
+    composer.init();
+  }
 }
