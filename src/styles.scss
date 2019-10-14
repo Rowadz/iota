@@ -11,3 +11,8 @@ kbd,
 samp {
   font-family: 'Press Start 2P', cursive;
 }
+dialog {
+  position: fixed !important;
+  top: 50% !important;
+  transform: translate(0, -50%) !important;
+}
