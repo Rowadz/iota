@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { colors } from '../../helpers/colors.array';
 import dialogPolyfill from 'dialog-polyfill';
+import { ComposerService } from 'src/app/services/composer.service';
 
 @Component({
   selector: 'iota-color-options',
@@ -10,12 +11,10 @@ import dialogPolyfill from 'dialog-polyfill';
 export class ColorOptionsComponent implements OnInit {
   readonly buttonsColors: Array<string>;
   @Input() isBg: boolean;
-  @Output() selectedColorChanged: EventEmitter<string>;
 
-  constructor() {
+  constructor(private readonly composer: ComposerService) {
     this.buttonsColors = colors;
     this.isBg = false;
-    this.selectedColorChanged = new EventEmitter<string>();
   }
 
   ngOnInit(): void {}
@@ -27,6 +26,6 @@ export class ColorOptionsComponent implements OnInit {
   }
 
   changeColor(color: string): void {
-    this.selectedColorChanged.emit(color);
+    this.composer.mixinStateColorWithParticles(color);
   }
 }

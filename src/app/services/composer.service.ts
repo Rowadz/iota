@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AppState, Shape } from '../models';
 import { DeepPartial } from 'utility-types';
 import { IParams } from 'angular-particle/lib';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import atomsConf from '../components/image-container/particles/particlesConf/atoms.conf';
 import pentagonConf from '../components/image-container/particles/particlesConf/pentagon.conf';
 
@@ -32,18 +32,24 @@ export class ComposerService {
     this.stateChange.next(this.state);
   }
 
-  mixinStateColorWithParticles(
-    obj: DeepPartial<IParams>
-  ): DeepPartial<IParams> {
-    return {
-      ...obj,
-      particles: {
-        ...obj.particles,
-        color: {
-          value: this.state.selectedColor
+  mixinStateColorWithParticles(color: string): void {
+    this.state = {
+      ...this.state,
+      particlesConf: {
+        ...this.state.particlesConf,
+        particles: {
+          ...this.state.particlesConf.particles,
+          color: {
+            value: color
+          },
+          line_linked: {
+            ...this.state.particlesConf.particles.line_linked,
+            color
+          }
         }
       }
     };
+    this.stateChange.next(this.state);
   }
 
   setShape(shape: Shape): void {
