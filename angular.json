@@ -27,7 +27,8 @@
             "styles": [
               "src/styles.scss",
               "./node_modules/nes.css/css/nes.min.css",
-              "./node_modules/bootstrap-4-grid/css/grid.css"
+              "./node_modules/bootstrap-4-grid/css/grid.css",
+              "./node_modules/magic.css/dist/magic.css"
             ],
             "scripts": []
           },

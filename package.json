@@ -26,6 +26,7 @@
     "dialog-polyfill": "^0.5.0",
     "dom-to-image": "^2.6.0",
     "file-saver": "^2.0.2",
+    "magic.css": "^1.4.1",
     "nes.css": "^2.2.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
