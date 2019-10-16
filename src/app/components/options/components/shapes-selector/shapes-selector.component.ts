@@ -11,7 +11,7 @@ export class ShapesSelectorComponent implements OnInit {
   readonly shapes: Array<Shape>;
 
   constructor(public readonly composer: ComposerService) {
-    this.shapes = ['Atoms', 'Pentagons'];
+    this.shapes = ['Atoms', 'Pentagons', 'Atomz'];
   }
 
   ngOnInit(): void {}

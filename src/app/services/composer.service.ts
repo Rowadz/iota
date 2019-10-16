@@ -5,6 +5,7 @@ import { IParams } from 'angular-particle/lib';
 import { BehaviorSubject, Subject } from 'rxjs';
 import atomsConf from '../components/image-container/particles/particlesConf/atoms.conf';
 import pentagonConf from '../components/image-container/particles/particlesConf/pentagon.conf';
+import atomzConf from '../components/image-container/particles/particlesConf/atomz.conf';
 
 @Injectable({
   providedIn: 'root'
@@ -60,6 +61,8 @@ export class ComposerService {
         return this.mixSelectedColorWithParticles(atomsConf);
       case 'Pentagons':
         return this.mixSelectedColorWithParticles(pentagonConf);
+      case 'Atomz':
+        return this.mixSelectedColorWithParticles(atomzConf);
       default:
         return this.mixSelectedColorWithParticles(atomsConf);
     }
