@@ -16,15 +16,15 @@ export default {
     shape: {
       type: 'circle',
       stroke: {
-        width: 10,
-        color: '#000'
+        width: 0,
+        color: '#fff'
       },
       polygon: {
         nb_sides: 5
       }
     },
     opacity: {
-      value: 1,
+      value: 0.5,
       random: true,
       anim: {
         enable: false,
@@ -47,8 +47,8 @@ export default {
       enable: true,
       distance: 150,
       color: '#fff',
-      opacity: 0.4,
-      width: 1
+      opacity: 1,
+      width: 9.3
     },
     move: {
       enable: true,
@@ -70,7 +70,7 @@ export default {
     events: {
       onhover: {
         enable: true,
-        mode: 'repulse'
+        mode: 'grab'
       },
       onclick: {
         enable: true,

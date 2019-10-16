@@ -6,6 +6,8 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import atomsConf from '../components/image-container/particles/particlesConf/atoms.conf';
 import pentagonConf from '../components/image-container/particles/particlesConf/pentagon.conf';
 import atomzConf from '../components/image-container/particles/particlesConf/atomz.conf';
+import squareConf from '../components/image-container/particles/particlesConf/square.conf';
+import onyxConf from '../components/image-container/particles/particlesConf/onyx.conf';
 
 @Injectable({
   providedIn: 'root'
@@ -63,24 +65,31 @@ export class ComposerService {
         return this.mixSelectedColorWithParticles(pentagonConf);
       case 'Atomz':
         return this.mixSelectedColorWithParticles(atomzConf);
+      case 'Square':
+        return this.mixSelectedColorWithParticles(squareConf);
+      case 'Onyx':
+        return this.mixSelectedColorWithParticles(onyxConf);
       default:
         return this.mixSelectedColorWithParticles(atomsConf);
     }
   }
 
   private mixinParticlesColorWithState(color: string): void {
+    const conf: DeepPartial<IParams> = this.whatShapeConf(
+      this.state.selectedShape
+    );
     this.state = {
       ...this.state,
       selectedColor: color,
       particlesConf: {
-        ...this.state.particlesConf,
+        ...conf,
         particles: {
-          ...this.state.particlesConf.particles,
+          ...conf.particles,
           color: {
             value: color
           },
           line_linked: {
-            ...this.state.particlesConf.particles.line_linked,
+            ...conf.particles.line_linked,
             color
           }
         }
@@ -97,7 +106,7 @@ export class ComposerService {
         ...conf.particles,
         color: { value: this.state.selectedColor },
         line_linked: {
-          ...this.state.particlesConf.particles.line_linked,
+          ...conf.particles.line_linked,
           color: this.state.selectedColor
         }
       }

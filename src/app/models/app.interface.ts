@@ -8,4 +8,4 @@ export interface AppState {
   particlesConf: DeepPartial<IParams>;
 }
 
-export type Shape = 'Atoms' | 'Pentagons' | 'Atomz';
+export type Shape = 'Atoms' | 'Pentagons' | 'Atomz' | 'Square' | 'Onyx';

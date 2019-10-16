@@ -4,28 +4,28 @@ import { DeepPartial } from 'utility-types';
 export default {
   particles: {
     number: {
-      value: 200,
+      value: 180,
       density: {
         enable: true,
         value_area: 800
       }
     },
     color: {
-      value: '#fff'
+      value: '#40010D'
     },
     shape: {
-      type: 'circle',
+      type: 'edge',
       stroke: {
-        width: 10,
-        color: '#000'
+        width: 0,
+        color: '#000000'
       },
       polygon: {
         nb_sides: 5
       }
     },
     opacity: {
-      value: 1,
-      random: true,
+      value: 0.5,
+      random: false,
       anim: {
         enable: false,
         speed: 1,
@@ -34,7 +34,7 @@ export default {
       }
     },
     size: {
-      value: 2,
+      value: 50,
       random: true,
       anim: {
         enable: false,
@@ -44,11 +44,7 @@ export default {
       }
     },
     line_linked: {
-      enable: true,
-      distance: 150,
-      color: '#fff',
-      opacity: 0.4,
-      width: 1
+      enable: false
     },
     move: {
       enable: true,
@@ -70,7 +66,7 @@ export default {
     events: {
       onhover: {
         enable: true,
-        mode: 'repulse'
+        mode: 'bubble'
       },
       onclick: {
         enable: true,
@@ -104,5 +100,5 @@ export default {
       }
     }
   },
-  retina_detect: true
+  retina_detect: false
 } as DeepPartial<IParams>;
