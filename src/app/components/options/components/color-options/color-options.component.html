@@ -1,4 +1,4 @@
-<section class="d-inline row">
+<section class="d-inline row" [attr.data-isBg]="id + '@' + isBg">
   <button
     type="button"
     class="nes-btn col-12"
@@ -9,11 +9,11 @@
   </button>
 </section>
 <section>
-  <dialog class="nes-dialog is-dark is-rounded" id="dialog-dark-rounded">
+  <dialog class="nes-dialog is-dark is-rounded" [id]="id">
     <form method="dialog">
       <div class="row allow-scroll-through-colors">
         <button
-          (click)="changeColor(color)"
+          (click)="changeColor(color, isBg)"
           *ngFor="let color of buttonsColors"
           class="nes-btn col-md-1 col-xs-1 col-sm-1 color-button"
           [ngStyle]="{ backgroundColor: color }"

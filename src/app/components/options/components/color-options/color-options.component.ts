@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { colors } from '../../helpers/colors.array';
 import dialogPolyfill from 'dialog-polyfill';
 import { ComposerService } from 'src/app/services/composer.service';
+import { v4 } from 'uuid';
 
 @Component({
   selector: 'iota-color-options',
@@ -11,21 +12,27 @@ import { ComposerService } from 'src/app/services/composer.service';
 export class ColorOptionsComponent implements OnInit {
   readonly buttonsColors: Array<string>;
   @Input() isBg: boolean;
+  readonly id: string;
 
   constructor(private readonly composer: ComposerService) {
     this.buttonsColors = colors;
     this.isBg = false;
+    this.id = v4();
   }
 
   ngOnInit(): void {}
 
   openDialog(): void {
-    const dialog: HTMLElement = document.getElementById('dialog-dark-rounded');
+    const dialog: HTMLElement = document.getElementById(this.id);
     dialogPolyfill.registerDialog(dialog);
     (dialog as any).showModal();
   }
 
   changeColor(color: string): void {
-    this.composer.mixinStateColorWithParticles(color);
+    if (this.isBg) {
+      this.composer.updateState({ selectedBG: color });
+    } else {
+      this.composer.mixinStateColorWithParticles(color);
+    }
   }
 }

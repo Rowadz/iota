@@ -1,4 +1,9 @@
-<section id="particles" *ngIf="conf" class="magictime vanishIn">
+<section
+  id="particles"
+  *ngIf="conf"
+  class="magictime vanishIn"
+  [ngStyle]="{ backgroundColor: bg }"
+>
   <particles
     [style]="{}"
     [width]="100"

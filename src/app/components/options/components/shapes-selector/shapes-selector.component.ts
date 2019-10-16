@@ -17,6 +17,6 @@ export class ShapesSelectorComponent implements OnInit {
   ngOnInit(): void {}
 
   onShapeChanged(shape: Shape) {
-    this.composer.setShape(shape);
+    this.composer.updateState({ selectedShape: shape });
   }
 }

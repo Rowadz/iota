@@ -17,23 +17,29 @@ import { DeepPartial } from 'utility-types';
 export class ParticlesComponent implements OnInit {
   conf: DeepPartial<IParams>;
   state: AppState;
+  bg: string;
   constructor(private readonly composer: ComposerService) {
-    this.composer.stateChange.subscribe((s: AppState) => {
-      console.log(s);
-      console.log(this.conf);
-      if (this.conf) {
-        this.conf = null;
+    this.composer.stateChange.subscribe({
+      next: (s: AppState) => {
+        if (this.conf) {
+          this.conf = null;
+        }
+        this.bg = s.selectedBG;
+        setTimeout(() => {
+          this.conf = s.particlesConf;
+        }, 0);
       }
-      setTimeout(() => {
-        this.conf = s.particlesConf;
-      }, 0);
     });
   }
 
   ngOnInit(): void {
-    // const node = document.getElementById('particles');
-    // domToImage.toBlob(node).then((blob: Blob) => {
-    //   saveAs(blob, v4());
-    // });
+    this.composer.download.subscribe({
+      next: () => {
+        const node = document.getElementById('particles');
+        domToImage.toBlob(node).then((blob: Blob) => {
+          saveAs(blob, v4());
+        });
+      }
+    });
   }
 }
