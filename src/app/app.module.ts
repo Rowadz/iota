@@ -10,6 +10,7 @@ import { ColorOptionsComponent } from './components/options/components/color-opt
 import { ParticlesComponent } from './components/image-container/particles/particles.component';
 import { ParticlesModule } from 'angular-particle';
 import { ShapesSelectorComponent } from './components/options/components/shapes-selector/shapes-selector.component';
+import { PacmanSpinnerComponent } from './components/pacman-spinner/pacman-spinner.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ShapesSelectorComponent } from './components/options/components/shapes-
     ToolbarComponent,
     ColorOptionsComponent,
     ParticlesComponent,
-    ShapesSelectorComponent
+    ShapesSelectorComponent,
+    PacmanSpinnerComponent
   ],
   imports: [BrowserModule, AppRoutingModule, ParticlesModule],
   providers: [],
