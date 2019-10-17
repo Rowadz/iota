@@ -3,6 +3,7 @@ import { colors } from '../../helpers/colors.array';
 import dialogPolyfill from 'dialog-polyfill';
 import { ComposerService } from 'src/app/services/composer.service';
 import { v4 } from 'uuid';
+import { BG, SHAPECOLOR } from 'src/app/CONSTANTS/localstorage.constans';
 
 @Component({
   selector: 'iota-color-options',
@@ -30,8 +31,10 @@ export class ColorOptionsComponent implements OnInit {
 
   changeColor(color: string): void {
     if (this.isBg) {
+      localStorage.setItem(BG, color);
       this.composer.updateState({ selectedBG: color });
     } else {
+      localStorage.setItem(SHAPECOLOR, color);
       this.composer.mixinStateColorWithParticles(color);
     }
   }

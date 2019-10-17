@@ -11,6 +11,11 @@ import onyxConf from '../components/image-container/particles/particlesConf/onyx
 import circleConf from '../components/image-container/particles/particlesConf/circle.conf';
 import circlezConf from '../components/image-container/particles/particlesConf/circlez.cnof';
 import squarezConf from '../components/image-container/particles/particlesConf/squarez.conf';
+import {
+  BG,
+  SHAPECOLOR,
+  SELECTEDSHAPE
+} from '../CONSTANTS/localstorage.constans';
 
 @Injectable({
   providedIn: 'root'
@@ -34,10 +39,13 @@ export class ComposerService {
   init(): void {
     this.state = {
       ...this.state,
-      selectedBG: '#000000',
-      selectedColor: '#ffffff',
-      selectedShape: 'Atoms',
-      particlesConf: atomsConf
+      selectedBG: localStorage.getItem(BG) || '#000000',
+      selectedColor: localStorage.getItem(SHAPECOLOR) || '#ffffff',
+      selectedShape: (localStorage.getItem(SELECTEDSHAPE) as Shape) || 'Atomz'
+    };
+    this.state = {
+      ...this.state,
+      particlesConf: this.whatShapeConf()
     };
     this.stateChange.next(this.state);
   }
