@@ -85,6 +85,16 @@ export const colors: Array<string> = Array.from(
     '#D90404',
     '#201F26',
     '#D9B0B3',
-    '#F2C4C8'
+    '#F2C4C8',
+    '#3DD990',
+    '#F2B29B',
+    '#F2F0D8',
+    '#F2B279',
+    '#592519',
+    '#A6A186',
+    '#403E34',
+    '#A62C21',
+    '#D9D5C5',
+    '#B6D6F2'
   ])
 );
