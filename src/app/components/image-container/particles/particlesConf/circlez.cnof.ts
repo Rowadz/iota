@@ -4,7 +4,7 @@ import { DeepPartial } from 'utility-types';
 export default {
   particles: {
     number: {
-      value: 200,
+      value: 150,
       density: {
         enable: true,
         value_area: 800
@@ -16,7 +16,7 @@ export default {
     shape: {
       type: 'circle',
       stroke: {
-        width: 10,
+        width: 20,
         color: '#000'
       },
       polygon: {
@@ -34,7 +34,7 @@ export default {
       }
     },
     size: {
-      value: 2,
+      value: 80,
       random: true,
       anim: {
         enable: false,
@@ -44,7 +44,7 @@ export default {
       }
     },
     line_linked: {
-      enable: true,
+      enable: false,
       distance: 150,
       color: '#fff',
       opacity: 0.4,

@@ -8,6 +8,9 @@ import pentagonConf from '../components/image-container/particles/particlesConf/
 import atomzConf from '../components/image-container/particles/particlesConf/atomz.conf';
 import squareConf from '../components/image-container/particles/particlesConf/square.conf';
 import onyxConf from '../components/image-container/particles/particlesConf/onyx.conf';
+import circleConf from '../components/image-container/particles/particlesConf/circle.conf';
+import circlezConf from '../components/image-container/particles/particlesConf/circlez.cnof';
+import squarezConf from '../components/image-container/particles/particlesConf/squarez.conf';
 
 @Injectable({
   providedIn: 'root'
@@ -67,10 +70,16 @@ export class ComposerService {
         return this.mixSelectedColorWithParticles(pentagonConf);
       case 'Atomz':
         return this.mixSelectedColorWithParticles(atomzConf);
-      case 'Square':
+      case 'Squares':
         return this.mixSelectedColorWithParticles(squareConf);
+      case 'Squarez':
+        return this.mixSelectedColorWithParticles(squarezConf);
       case 'Onyx':
         return this.mixSelectedColorWithParticles(onyxConf);
+      case 'Circles':
+        return this.mixSelectedColorWithParticles(circleConf);
+      case 'Circlez':
+        return this.mixSelectedColorWithParticles(circlezConf);
       default:
         return this.mixSelectedColorWithParticles(atomsConf);
     }
