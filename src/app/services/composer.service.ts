@@ -16,6 +16,7 @@ export class ComposerService {
   private state: AppState;
   readonly download: Subject<void>;
   readonly stateChange: BehaviorSubject<AppState>;
+  loading: boolean;
   get shape(): Shape {
     return this.state.selectedShape;
   }
@@ -24,6 +25,7 @@ export class ComposerService {
     this.state = Object.create(null);
     this.stateChange = new BehaviorSubject<AppState>(null);
     this.download = new Subject<void>();
+    this.loading = false;
   }
 
   init(): void {

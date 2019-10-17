@@ -35,10 +35,18 @@ export class ParticlesComponent implements OnInit {
   ngOnInit(): void {
     this.composer.download.subscribe({
       next: () => {
+        this.composer.loading = true;
         const node = document.getElementById('particles');
         domToImage.toBlob(node).then((blob: Blob) => {
           saveAs(blob, v4());
+          setTimeout(() => {
+            this.composer.loading = false;
+          }, 1000);
         });
+      },
+      error: e => {
+        console.error(e);
+        alert('¯\\_(ツ)_/¯');
       }
     });
   }

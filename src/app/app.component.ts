@@ -7,7 +7,7 @@ import { ComposerService } from './services/composer.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private readonly composer: ComposerService) {
+  constructor(public readonly composer: ComposerService) {
     composer.init();
   }
 }
