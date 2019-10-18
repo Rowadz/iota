@@ -11,6 +11,7 @@ import { ParticlesComponent } from './components/image-container/particles/parti
 import { ParticlesModule } from 'angular-particle';
 import { ShapesSelectorComponent } from './components/options/components/shapes-selector/shapes-selector.component';
 import { PacmanSpinnerComponent } from './components/pacman-spinner/pacman-spinner.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { PacmanSpinnerComponent } from './components/pacman-spinner/pacman-spinn
     ShapesSelectorComponent,
     PacmanSpinnerComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, ParticlesModule],
+  imports: [BrowserModule, AppRoutingModule, ParticlesModule, LayoutModule],
   providers: [],
   bootstrap: [AppComponent]
 })

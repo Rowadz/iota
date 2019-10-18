@@ -11,7 +11,7 @@
   </div>
 </main>
 <iota-pacman-spinner *ngIf="composer.loading"></iota-pacman-spinner>
-<div class="start-me-popup">
+<div class="start-me-popup" *ngIf="!layout.state.isSmall">
   <a
     href="https://github.com/MohammedAl-Rowad/iota"
     target="_blank"
