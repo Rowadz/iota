@@ -67,6 +67,7 @@ You can view it [here](https://mohammedal-rowad.github.io/iota/).
 </p>
 </details>
 
+- to generate large images you can click (**Ctr** and **-**) to zoom out, then click generate (ps: refresh the page to get more distributed shapes)
 
 <details><summary>onyx 3, if you decrease the page zoom you will get a really big image (this work in all shapes)</summary>
 <p>
