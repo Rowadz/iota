@@ -26,7 +26,6 @@ export class LayoutService {
             ...this.state,
             [nameInState]: matches
           };
-          console.log(this.state);
         }
       });
     });
