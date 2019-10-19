@@ -124,11 +124,11 @@ export class ComposerService {
       ...conf,
       particles: {
         ...conf.particles,
-        size: {
-          ...conf.particles,
+        number: {
+          ...conf.particles.number,
           value: this.layout.state.isSmall
-            ? conf.particles.size.value / 2
-            : conf.particles.size.value
+            ? conf.particles.number.value / 2
+            : conf.particles.number.value
         },
         color: { value: this.state.selectedColor },
         line_linked: {
