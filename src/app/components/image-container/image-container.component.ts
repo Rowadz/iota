@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ComposerService } from 'src/app/services/composer.service';
+import { LayoutService } from 'src/app/services/layout.service';
 
 @Component({
   selector: 'iota-image-container',
@@ -7,7 +8,10 @@ import { ComposerService } from 'src/app/services/composer.service';
   styleUrls: ['./image-container.component.scss']
 })
 export class ImageContainerComponent implements OnInit {
-  constructor(private readonly comsposer: ComposerService) {}
+  constructor(
+    private readonly comsposer: ComposerService,
+    public readonly layout: LayoutService
+  ) {}
 
   ngOnInit(): void {}
 

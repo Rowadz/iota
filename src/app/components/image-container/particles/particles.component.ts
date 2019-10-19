@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import atoms from './particlesConf/atoms.conf';
-import pentagon from './particlesConf/pentagon.conf';
 import domToImage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import { v4 } from 'uuid';
@@ -8,6 +6,7 @@ import { ComposerService } from 'src/app/services/composer.service';
 import { AppState } from 'src/app/models';
 import { IParams } from 'angular-particle/lib';
 import { DeepPartial } from 'utility-types';
+import { LayoutService } from 'src/app/services/layout.service';
 
 @Component({
   selector: 'iota-particles',
@@ -18,7 +17,11 @@ export class ParticlesComponent implements OnInit {
   conf: DeepPartial<IParams>;
   state: AppState;
   bg: string;
-  constructor(private readonly composer: ComposerService) {
+
+  constructor(
+    private readonly composer: ComposerService,
+    public readonly layout: LayoutService
+  ) {
     this.composer.stateChange.subscribe({
       next: (s: AppState) => {
         if (this.conf) {
@@ -37,12 +40,25 @@ export class ParticlesComponent implements OnInit {
       next: () => {
         this.composer.loading = true;
         const node = document.getElementById('particles');
-        domToImage.toBlob(node).then((blob: Blob) => {
-          saveAs(blob, v4());
-          setTimeout(() => {
-            this.composer.loading = false;
-          }, 1000);
-        });
+        const { offsetHeight, offsetWidth } = node;
+        const scale = 750 / offsetWidth;
+        domToImage
+          .toPng(node, {
+            height: offsetHeight * scale,
+            width: offsetWidth * scale,
+            style: {
+              transform: `scale(${scale})`,
+              transformOrigin: 'top left',
+              width: `${offsetWidth}px`,
+              height: `${offsetHeight}px`
+            }
+          })
+          .then((dataUrl: string) => {
+            saveAs(dataUrl, v4());
+            setTimeout(() => {
+              this.composer.loading = false;
+            }, 1000);
+          });
       },
       error: e => {
         console.error(e);

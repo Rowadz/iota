@@ -16,6 +16,7 @@ import {
   SHAPECOLOR,
   SELECTEDSHAPE
 } from '../CONSTANTS/localstorage.constans';
+import { LayoutService } from './layout.service';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,7 @@ export class ComposerService {
     return this.state.selectedShape;
   }
 
-  constructor() {
+  constructor(private readonly layout: LayoutService) {
     this.state = Object.create(null);
     this.stateChange = new BehaviorSubject<AppState>(null);
     this.download = new Subject<void>();
@@ -123,6 +124,12 @@ export class ComposerService {
       ...conf,
       particles: {
         ...conf.particles,
+        size: {
+          ...conf.particles,
+          value: this.layout.state.isSmall
+            ? conf.particles.size.value / 2
+            : conf.particles.size.value
+        },
         color: { value: this.state.selectedColor },
         line_linked: {
           ...conf.particles.line_linked,

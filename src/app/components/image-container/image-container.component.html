@@ -1,4 +1,8 @@
-<div class="nes-container with-title" id="image-container">
+<div
+  class="nes-container with-title"
+  [ngClass]="{ 'm-0 p-0': layout.state.isSmall }"
+  id="image-container"
+>
   <p class="title">
     <button type="button" class="nes-btn is-primary" (click)="download()">
       Download
