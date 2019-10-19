@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import domToImage from 'dom-to-image';
+import domToImage, { Options } from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import { v4 } from 'uuid';
 import { ComposerService } from 'src/app/services/composer.service';
@@ -42,23 +42,24 @@ export class ParticlesComponent implements OnInit {
         const node = document.getElementById('particles');
         const { offsetHeight, offsetWidth } = node;
         const scale = 750 / offsetWidth;
-        domToImage
-          .toPng(node, {
-            height: offsetHeight * scale,
-            width: offsetWidth * scale,
-            style: {
-              transform: `scale(${scale})`,
-              transformOrigin: 'top left',
-              width: `${offsetWidth}px`,
-              height: `${offsetHeight}px`
+        const options: Options = this.layout.state.isSmall
+          ? {
+              height: offsetHeight * scale,
+              width: offsetWidth * scale,
+              style: {
+                transform: `scale(${scale})`,
+                transformOrigin: 'top left',
+                width: `${offsetWidth}px`,
+                height: `${offsetHeight}px`
+              }
             }
-          })
-          .then((dataUrl: string) => {
-            saveAs(dataUrl, v4());
-            setTimeout(() => {
-              this.composer.loading = false;
-            }, 1000);
-          });
+          : undefined;
+        domToImage.toPng(node, options).then((dataUrl: string) => {
+          saveAs(dataUrl, v4());
+          setTimeout(() => {
+            this.composer.loading = false;
+          }, 1000);
+        });
       },
       error: e => {
         console.error(e);
