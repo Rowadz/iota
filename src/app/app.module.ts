@@ -8,7 +8,6 @@ import { ImageContainerComponent } from "./components/image-container/image-cont
 import { ToolbarComponent } from "./components/toolbar/toolbar.component";
 import { ColorOptionsComponent } from "./components/options/components/color-options/color-options.component";
 import { ParticlesComponent } from "./components/image-container/particles/particles.component";
-import { ParticlesModule } from "angular-particle";
 import { ShapesSelectorComponent } from "./components/options/components/shapes-selector/shapes-selector.component";
 import { PacmanSpinnerComponent } from "./components/pacman-spinner/pacman-spinner.component";
 import { LayoutModule } from "@angular/cdk/layout";
@@ -25,13 +24,7 @@ import { NgParticlesModule } from "ng-particles";
     ShapesSelectorComponent,
     PacmanSpinnerComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ParticlesModule,
-    LayoutModule,
-    NgParticlesModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, LayoutModule, NgParticlesModule],
   providers: [],
   bootstrap: [AppComponent],
 })
