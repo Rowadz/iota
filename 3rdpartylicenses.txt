@@ -209,9 +209,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   [1]: http://eligrey.com
 
 
-magic.css
-MIT
-
 nes.css
 MIT
 MIT License
