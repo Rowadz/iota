@@ -1,27 +1,27 @@
-import { IParams } from 'angular-particle/lib';
-import { DeepPartial } from 'utility-types';
+import { IParams } from "angular-particle/lib";
+import { DeepPartial } from "utility-types";
 
 export default {
   particles: {
     number: {
-      value: 150,
+      value: 200,
       density: {
         enable: true,
-        value_area: 800
-      }
+        value_area: 800,
+      },
     },
     color: {
-      value: '#fff'
+      value: "#fff",
     },
     shape: {
-      type: 'circle',
+      type: "circle",
       stroke: {
         width: 20,
-        color: '#000'
+        color: "#000",
       },
       polygon: {
-        nb_sides: 5
-      }
+        nb_sides: 5,
+      },
     },
     opacity: {
       value: 1,
@@ -30,8 +30,8 @@ export default {
         enable: false,
         speed: 1,
         opacity_min: 0.1,
-        sync: false
-      }
+        sync: false,
+      },
     },
     size: {
       value: 80,
@@ -40,69 +40,69 @@ export default {
         enable: false,
         speed: 40,
         size_min: 0.1,
-        sync: false
-      }
+        sync: false,
+      },
     },
     line_linked: {
       enable: false,
       distance: 150,
-      color: '#fff',
+      color: "#fff",
       opacity: 0.4,
-      width: 1
+      width: 1,
     },
     move: {
       enable: true,
       speed: 2,
-      direction: 'none',
+      direction: "none",
       random: false,
       straight: false,
-      out_mode: 'out',
+      out_mode: "out",
       bounce: false,
       attract: {
         enable: false,
         rotateX: 600,
-        rotateY: 1200
-      }
-    }
+        rotateY: 1200,
+      },
+    },
   },
   interactivity: {
-    detect_on: 'canvas',
+    detect_on: "canvas",
     events: {
       onhover: {
         enable: true,
-        mode: 'bubble'
+        mode: "bubble",
       },
       onclick: {
         enable: true,
-        mode: 'push'
+        mode: "push",
       },
-      resize: true
+      resize: true,
     },
     modes: {
       grab: {
         distance: 150,
         line_linked: {
-          opacity: 1
-        }
+          opacity: 1,
+        },
       },
       bubble: {
         distance: 400,
         size: 40,
         duration: 2,
         opacity: 8,
-        speed: 3
+        speed: 3,
       },
       repulse: {
         distance: 200,
-        duration: 0.4
+        duration: 0.4,
       },
       push: {
-        particles_nb: 4
+        particles_nb: 4,
       },
       remove: {
-        particles_nb: 2
-      }
-    }
+        particles_nb: 2,
+      },
+    },
   },
-  retina_detect: true
+  retina_detect: true,
 } as DeepPartial<IParams>;

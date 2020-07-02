@@ -1,17 +1,17 @@
 <section
   id="particles"
   *ngIf="conf"
-  class="magictime vanishIn"
-  [ngStyle]="{ backgroundColor: bg, height: '100vh' }"
+  [ngStyle]="{
+    backgroundColor: bg,
+    width: '100%'
+  }"
 >
-  <particles
-    [style]="{
-      height: '100%',
-      padding: 0,
-      margin: 0
+  <ng-particles
+    [ngStyle]="{
+      backgroundColor: bg,
+      width: '100%'
     }"
-    [width]="100"
-    [height]="100"
-    [params]="conf"
-  ></particles>
+    id="tsparticles"
+    [options]="conf"
+  ></ng-particles>
 </section>
