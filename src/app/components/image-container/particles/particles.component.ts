@@ -40,21 +40,21 @@ export class ParticlesComponent implements OnInit {
       next: () => {
         this.composer.loading = true;
         const node = document.getElementById("particles");
-        // const { offsetHeight, offsetWidth } = node;
-        // const scale = 750 / offsetWidth;
-        // const options: Options = this.layout.state.isSmall
-        //   ? {
-        //       height: offsetHeight * scale,
-        //       width: offsetWidth * scale,
-        //       style: {
-        //         transform: `scale(${scale})`,
-        //         transformOrigin: "top left",
-        //         width: `${offsetWidth}px`,
-        //         height: `${offsetHeight}px`,
-        //       },
-        //     }
-        //   : undefined;
-        domToImage.toPng(node).then((dataUrl: string) => {
+        const { offsetHeight, offsetWidth } = node;
+        const scale = 750 / offsetWidth;
+        const options = this.layout.state.isSmall
+          ? {
+              height: offsetHeight * scale,
+              width: offsetWidth * scale,
+              style: {
+                transform: `scale(${scale})`,
+                transformOrigin: "top left",
+                width: `${offsetWidth}px`,
+                height: `${offsetHeight}px`,
+              },
+            }
+          : undefined;
+        domToImage.toPng(node, options).then((dataUrl: string) => {
           saveAs(dataUrl, v4());
           setTimeout(() => {
             this.composer.loading = false;
