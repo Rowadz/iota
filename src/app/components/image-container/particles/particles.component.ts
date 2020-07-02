@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import domToImage, { Options } from "dom-to-image";
 import { saveAs } from "file-saver";
 import { v4 } from "uuid";
 import { ComposerService } from "src/app/services/composer.service";
@@ -7,6 +6,7 @@ import { AppState } from "src/app/models";
 import { IParams } from "angular-particle/lib";
 import { DeepPartial } from "utility-types";
 import { LayoutService } from "src/app/services/layout.service";
+const domToImage = require("dom-to-image");
 
 @Component({
   selector: "iota-particles",
@@ -40,20 +40,20 @@ export class ParticlesComponent implements OnInit {
       next: () => {
         this.composer.loading = true;
         const node = document.getElementById("particles");
-        const { offsetHeight, offsetWidth } = node;
-        const scale = 750 / offsetWidth;
-        const options: Options = this.layout.state.isSmall
-          ? {
-              height: offsetHeight * scale,
-              width: offsetWidth * scale,
-              style: {
-                transform: `scale(${scale})`,
-                transformOrigin: "top left",
-                width: `${offsetWidth}px`,
-                height: `${offsetHeight}px`,
-              },
-            }
-          : undefined;
+        // const { offsetHeight, offsetWidth } = node;
+        // const scale = 750 / offsetWidth;
+        // const options: Options = this.layout.state.isSmall
+        //   ? {
+        //       height: offsetHeight * scale,
+        //       width: offsetWidth * scale,
+        //       style: {
+        //         transform: `scale(${scale})`,
+        //         transformOrigin: "top left",
+        //         width: `${offsetWidth}px`,
+        //         height: `${offsetHeight}px`,
+        //       },
+        //     }
+        //   : undefined;
         domToImage.toPng(node).then((dataUrl: string) => {
           saveAs(dataUrl, v4());
           setTimeout(() => {

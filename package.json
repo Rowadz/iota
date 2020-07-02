@@ -31,6 +31,7 @@
     "magic.css": "^1.4.1",
     "nes.css": "^2.2.1",
     "ng-particles": "^1.16.2",
+    "retina-dom-to-image": "^2.5.6",
     "rxjs": "~6.5.5",
     "tslib": "^1.10.0",
     "tsparticles": "^1.16.2",
