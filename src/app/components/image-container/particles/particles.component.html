@@ -4,14 +4,13 @@
   [ngStyle]="{
     backgroundColor: bg,
     width: '100%',
-    height: '100vh'
+    height: layout.state.isSmall ? '100vh' : 'auto'
   }"
 >
   <ng-particles
     [ngStyle]="{
       backgroundColor: bg,
-      width: '100%',
-      height: '100vh'
+      width: '100%'
     }"
     id="tsparticles"
     [options]="conf"

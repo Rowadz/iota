@@ -6,7 +6,7 @@ import { AppState } from "src/app/models";
 import { IParams } from "angular-particle/lib";
 import { DeepPartial } from "utility-types";
 import { LayoutService } from "src/app/services/layout.service";
-const domToImage = require("dom-to-image");
+import domToImage, { Options } from "dom-to-image";
 
 @Component({
   selector: "iota-particles",
@@ -42,7 +42,7 @@ export class ParticlesComponent implements OnInit {
         const node = document.getElementById("particles");
         const { offsetHeight, offsetWidth } = node;
         const scale = 750 / offsetWidth;
-        const options = this.layout.state.isSmall
+        const options: Options = this.layout.state.isSmall
           ? {
               height: offsetHeight * scale,
               width: offsetWidth * scale,
