@@ -1,25 +1,25 @@
-import { Injectable } from '@angular/core';
-import { AppState, Shape } from '../models';
-import { DeepPartial } from 'utility-types';
-import { IParams } from 'angular-particle/lib';
-import { BehaviorSubject, Subject } from 'rxjs';
-import atomsConf from '../components/image-container/particles/particlesConf/atoms.conf';
-import pentagonConf from '../components/image-container/particles/particlesConf/pentagon.conf';
-import atomzConf from '../components/image-container/particles/particlesConf/atomz.conf';
-import squareConf from '../components/image-container/particles/particlesConf/square.conf';
-import onyxConf from '../components/image-container/particles/particlesConf/onyx.conf';
-import circleConf from '../components/image-container/particles/particlesConf/circle.conf';
-import circlezConf from '../components/image-container/particles/particlesConf/circlez.cnof';
-import squarezConf from '../components/image-container/particles/particlesConf/squarez.conf';
+import { Injectable } from "@angular/core";
+import { AppState, Shape } from "../models";
+import { DeepPartial } from "utility-types";
+import { IParams } from "angular-particle/lib";
+import { BehaviorSubject, Subject } from "rxjs";
+import atomsConf from "../components/image-container/particles/particlesConf/atoms.conf";
+import pentagonConf from "../components/image-container/particles/particlesConf/pentagon.conf";
+import atomzConf from "../components/image-container/particles/particlesConf/atomz.conf";
+import squareConf from "../components/image-container/particles/particlesConf/square.conf";
+import onyxConf from "../components/image-container/particles/particlesConf/onyx.conf";
+import circleConf from "../components/image-container/particles/particlesConf/circle.conf";
+import circlezConf from "../components/image-container/particles/particlesConf/circlez.cnof";
+import squarezConf from "../components/image-container/particles/particlesConf/squarez.conf";
 import {
   BG,
   SHAPECOLOR,
-  SELECTEDSHAPE
-} from '../CONSTANTS/localstorage.constans';
-import { LayoutService } from './layout.service';
+  SELECTEDSHAPE,
+} from "../CONSTANTS/localstorage.constans";
+import { LayoutService } from "./layout.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class ComposerService {
   private state: AppState;
@@ -40,13 +40,13 @@ export class ComposerService {
   init(): void {
     this.state = {
       ...this.state,
-      selectedBG: localStorage.getItem(BG) || '#000000',
-      selectedColor: localStorage.getItem(SHAPECOLOR) || '#ffffff',
-      selectedShape: (localStorage.getItem(SELECTEDSHAPE) as Shape) || 'Atomz'
+      selectedBG: localStorage.getItem(BG) || "#000000",
+      selectedColor: localStorage.getItem(SHAPECOLOR) || "#ffffff",
+      selectedShape: (localStorage.getItem(SELECTEDSHAPE) as Shape) || "Atomz",
     };
     this.state = {
       ...this.state,
-      particlesConf: this.whatShapeConf()
+      particlesConf: this.whatShapeConf(),
     };
     this.stateChange.next(this.state);
   }
@@ -59,12 +59,12 @@ export class ComposerService {
   updateState(s: DeepPartial<AppState>): void {
     this.state = {
       ...this.state,
-      ...s
+      ...s,
     };
 
     this.state = {
       ...this.state,
-      particlesConf: this.whatShapeConf(s.selectedShape)
+      particlesConf: this.whatShapeConf(s.selectedShape),
     };
     this.stateChange.next(this.state);
   }
@@ -73,21 +73,21 @@ export class ComposerService {
     shape: Shape = this.state.selectedShape
   ): DeepPartial<IParams> {
     switch (shape) {
-      case 'Atoms':
+      case "Atoms":
         return this.mixSelectedColorWithParticles(atomsConf);
-      case 'Pentagons':
+      case "Pentagons":
         return this.mixSelectedColorWithParticles(pentagonConf);
-      case 'Atomz':
+      case "Atomz":
         return this.mixSelectedColorWithParticles(atomzConf);
-      case 'Squares':
-        return this.mixSelectedColorWithParticles(squareConf);
-      case 'Squarez':
+      case "Squares":
+        return this.mixSelectedColorWithParticles(squareConf as any);
+      case "Squarez":
         return this.mixSelectedColorWithParticles(squarezConf);
-      case 'Onyx':
+      case "Onyx":
         return this.mixSelectedColorWithParticles(onyxConf);
-      case 'Circles':
+      case "Circles":
         return this.mixSelectedColorWithParticles(circleConf);
-      case 'Circlez':
+      case "Circlez":
         return this.mixSelectedColorWithParticles(circlezConf);
       default:
         return this.mixSelectedColorWithParticles(atomsConf);
@@ -106,20 +106,22 @@ export class ComposerService {
         particles: {
           ...conf.particles,
           color: {
-            value: color
+            value: color,
           },
           line_linked: {
             ...conf.particles.line_linked,
-            color
-          }
-        }
-      }
+            color,
+          },
+          // links: {
+          //   ...((conf.particles as any).links || {}),
+          //   color: this.state.selectedColor,
+          // },
+        },
+      },
     };
   }
 
-  private mixSelectedColorWithParticles(
-    conf: DeepPartial<IParams>
-  ): DeepPartial<IParams> {
+  private mixSelectedColorWithParticles(conf: DeepPartial<IParams>) {
     return {
       ...conf,
       particles: {
@@ -128,14 +130,18 @@ export class ComposerService {
           ...conf.particles.number,
           value: this.layout.state.isSmall
             ? conf.particles.number.value / 2
-            : conf.particles.number.value
+            : conf.particles.number.value,
         },
         color: { value: this.state.selectedColor },
         line_linked: {
           ...conf.particles.line_linked,
-          color: this.state.selectedColor
-        }
-      }
+          color: this.state.selectedColor,
+        },
+        // links: {
+        //   ...((conf.particles as any).links || {}),
+        //   color: this.state.selectedColor,
+        // },
+      },
     };
   }
 }

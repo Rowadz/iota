@@ -7,7 +7,7 @@ export default {
       value: 200,
       density: {
         enable: true,
-        value_area: 800,
+        value_area: 500,
       },
     },
     color: {
@@ -20,38 +20,36 @@ export default {
         color: "#000000",
       },
       polygon: {
-        nb_sides: 5,
+        nb_sides: 6,
+      },
+      image: {
+        src: "img/github.svg",
+        width: 100,
+        height: 100,
       },
     },
     opacity: {
       value: 0.5,
-      random: false,
-      anim: {
-        enable: false,
-        speed: 1,
-        opacity_min: 0.1,
-        sync: false,
-      },
+      random: true,
     },
     size: {
-      value: 50,
+      value: 30,
       random: true,
-      anim: {
-        enable: false,
-        speed: 40,
-        size_min: 0.1,
-        sync: false,
-      },
     },
     line_linked: {
       enable: false,
+      distance: 200,
+      color: "#ff5722",
+      opacity: 0.3,
+      width: 2,
     },
     move: {
       enable: true,
-      speed: 2,
-      direction: "none",
-      random: false,
-      straight: false,
+      speed: 5,
+      direction: "bottom",
+      angle: 10,
+      random: true,
+      straight: true,
       out_mode: "out",
       bounce: false,
       attract: {
@@ -66,7 +64,7 @@ export default {
     events: {
       onhover: {
         enable: true,
-        mode: "grab",
+        mode: ["grab", "bubble"],
       },
       onclick: {
         enable: true,
@@ -76,20 +74,20 @@ export default {
     },
     modes: {
       grab: {
-        distance: 150,
+        distance: 400,
         line_linked: {
-          opacity: 1,
+          opacity: 0.7,
         },
       },
       bubble: {
-        distance: 400,
+        distance: 600,
         size: 40,
-        duration: 2,
-        opacity: 8,
-        speed: 3,
+        duration: 1,
+        opacity: 0.8,
+        speed: 2,
       },
       repulse: {
-        distance: 200,
+        distance: 400,
         duration: 0.4,
       },
       push: {

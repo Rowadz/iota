@@ -16,7 +16,7 @@ export default {
     shape: {
       type: "circle",
       stroke: {
-        width: 10,
+        width: 0,
         color: "#000",
       },
       polygon: {

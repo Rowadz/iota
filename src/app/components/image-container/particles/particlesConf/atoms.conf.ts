@@ -11,7 +11,12 @@ export default {
       },
     },
     color: {
-      value: "#fff",
+      value: "#ffffff",
+      animation: {
+        enable: false,
+        speed: 1,
+        sync: true,
+      },
     },
     shape: {
       type: "circle",
